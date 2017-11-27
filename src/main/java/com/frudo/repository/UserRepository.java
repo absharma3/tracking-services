@@ -8,8 +8,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface UserRepository extends MongoRepository<User, String> {
 
-    public User findByMobileNumber(Number mobile);
-    public User findByUserId(String id);
+    User findByMobileNumber(Long mobileNumber);
+    User findByUserId(String userId);
+    User findByEmail(String email);
 
 
 }

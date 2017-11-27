@@ -10,8 +10,8 @@ public class TrackingInfo {
 
     String trackerId;
     Location currentLocation;
-    Number mobileNumber;
-    Map<Object, Object> additionalInfo = new HashMap<Object, Object>();
+    Long mobileNumber;
+    Map<String, Object> additionalInfo = new HashMap<String, Object>();
 
     public String getTrackerId() {
         return trackerId;
@@ -29,19 +29,19 @@ public class TrackingInfo {
         this.currentLocation = currentLocation;
     }
 
-    public Map<Object, Object> getAdditionalInfo() {
+    public Map<String, Object> getAdditionalInfo() {
         return additionalInfo;
     }
 
-    public void setAdditionalInfo(Map<Object, Object> additionalInfo) {
+    public void setAdditionalInfo(Map<String, Object> additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
 
-    public Number getMobileNumber() {
+    public Long getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(Number mobileNumber) {
+    public void setMobileNumber(Long mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 }

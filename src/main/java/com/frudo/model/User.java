@@ -12,7 +12,7 @@ public class User implements IUser {
     @Id
     String userId;
     String userName;
-    Number mobileNumber;
+    Long mobileNumber;
     String address;
     String email;
     Boolean isDriver;
@@ -33,11 +33,11 @@ public class User implements IUser {
         this.userName = userName;
     }
 
-    public Number getMobileNumber() {
+    public Long getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(Number mobileNumber) {
+    public void setMobileNumber(Long mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
