@@ -36,7 +36,7 @@ public class AssetTrackingService implements TrackingServices {
                     return trackingRepository.save(trackingInfo);
                 }
             }
-
+            return null;
 
     }
 
