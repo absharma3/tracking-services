@@ -1,10 +1,12 @@
 package com.frudo.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by abhimanyus on 11/26/17.
  */
+@Document
 public class User implements IUser {
 
     @Id
