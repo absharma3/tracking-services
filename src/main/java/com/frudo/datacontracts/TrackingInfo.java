@@ -1,5 +1,7 @@
 package com.frudo.datacontracts;
 
+import org.joda.time.DateTime;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +14,15 @@ public class TrackingInfo {
     Location currentLocation;
     Long mobileNumber;
     Map<String, Object> additionalInfo = new HashMap<String, Object>();
+    DateTime createTimestamp;
+
+    public DateTime getCreateTimestamp() {
+        return createTimestamp;
+    }
+
+    public void setCreateTimestamp(DateTime createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
 
     public String getTrackerId() {
         return trackerId;

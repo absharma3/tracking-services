@@ -1,6 +1,7 @@
 package com.frudo.controllers;
 
 import com.frudo.model.Vehicle;
+import com.frudo.model.VehicleImpl;
 import com.frudo.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,8 +22,8 @@ public class VehicleServices {
     VehicleRepository vehicleRepository;
 
     @RequestMapping(path = "/register" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public Vehicle register(@RequestBody Vehicle vehicleDetails){
-        Vehicle vehicle = vehicleRepository.save(vehicleDetails);
+    public VehicleImpl register(@RequestBody VehicleImpl vehicleDetails){
+        VehicleImpl vehicle = vehicleRepository.save(vehicleDetails);
         return vehicle;
     }
 
