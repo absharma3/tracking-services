@@ -19,3 +19,13 @@ TripServices - apis related to trip creation.
 AssetTrackingServices - apis related to tracking a vehicle on a trip.
 
 MobileTracking Services - apis realted to tracking a mobile with a user on a trip.
+
+
+**Build:**
+To build the project just run
+mvn clean install
+
+**Run:**
+For running the application you need an instance of mongodb running on the default port.
+Start the application by running 
+mvn spring-boot:run
