@@ -27,14 +27,14 @@ public class UserServices {
     }
 
     @RequestMapping(path = "/find/{id}" , method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody User addUser(@PathVariable("id") String userId){
+    public @ResponseBody User findUser(@PathVariable("id") String userId){
         User user =  userRepository.findByUserId(userId);
         return user;
     }
 
 
     @RequestMapping(path = "/find/{number}/mobile" , method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody User addUser(@PathVariable("number") Long mobileNumber){
+    public @ResponseBody User findUserByMobile(@PathVariable("number") Long mobileNumber){
 
 //        List users = userRepository.findAll();
         User user =  userRepository.findByMobileNumber(mobileNumber);

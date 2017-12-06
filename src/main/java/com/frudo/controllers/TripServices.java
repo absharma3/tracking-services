@@ -19,7 +19,8 @@ public class TripServices {
 
     @RequestMapping(path = "/create" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
     public @ResponseBody Trip createTrip(@RequestBody Trip tripDetails){
-            return tripRepository.save(tripDetails);
+
+        return tripRepository.save(tripDetails);
     }
 
     @RequestMapping(path = "/updateDriver/{tripid}" , method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})

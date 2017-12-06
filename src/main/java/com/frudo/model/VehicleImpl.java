@@ -1,11 +1,14 @@
 package com.frudo.model;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * Created by abhimanyus on 11/27/17.
  */
 public class VehicleImpl implements Vehicle {
 
     String vehicleName;
+    @Id
     String vehicleId;
     String vehicleType;
     String vehicleTrackerId;
