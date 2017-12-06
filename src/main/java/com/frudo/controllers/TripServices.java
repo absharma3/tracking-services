@@ -22,7 +22,7 @@ public class TripServices {
             return tripRepository.save(tripDetails);
     }
 
-    @RequestMapping(path = "/updateDriver/{tripid}" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(path = "/updateDriver/{tripid}" , method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
     public @ResponseBody Trip updateTrip(@PathVariable("tripid") String tripId,@RequestBody Trip tripDetails){
         Trip trip =  tripRepository.findOne(tripId);
         trip.setDriverId(tripDetails.getDriverId());

@@ -22,7 +22,7 @@ import java.util.List;
  * Created by abhimanyus on 11/23/17.
  */
 
-@RequestMapping("/api/track/asset")
+@RequestMapping("/api/asset")
 @RestController
 public class AssetTrackingService implements TrackingServices {
 
@@ -36,7 +36,7 @@ public class AssetTrackingService implements TrackingServices {
     @Value("${server.tracking.timeinterval}")
     int timeInterval;
 
-    @RequestMapping(path = "/" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(path = "/track" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
     public TrackingInfo track(TrackingInfo trackingInfo) {
             Vehicle vehicle = vehicleRepository.findByVehicleTrackerId(trackingInfo.getTrackerId());
             if(vehicle != null){

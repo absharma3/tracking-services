@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by abhimanyus on 11/26/17.
  */
 
-@RequestMapping("/api/track/mobile")
+@RequestMapping("/api/mobile")
 @RestController
 public class MobileTrackingServices implements TrackingServices {
 
@@ -27,7 +27,7 @@ public class MobileTrackingServices implements TrackingServices {
     @Autowired
     TrackingRepository trackingRepository;
 
-    @RequestMapping(path = "/" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(path = "/track" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
     public TrackingInfo track(TrackingInfo trackingInfo){
 
         //Assuming that for mobile we will be passed a mobile number
