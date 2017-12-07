@@ -11,9 +11,9 @@ import java.util.Map;
 public class TrackingInfo {
 
     String trackerId;
-    Location currentLocation;
+    Location currentLocation = new Location();
     Long mobileNumber;
-    Map<String, Object> additionalInfo = new HashMap<String, Object>();
+//    Map<String, Object> additionalInfo = new HashMap<String, Object>();
     DateTime createTimestamp;
 
     public DateTime getCreateTimestamp() {
@@ -40,13 +40,13 @@ public class TrackingInfo {
         this.currentLocation = currentLocation;
     }
 
-    public Map<String, Object> getAdditionalInfo() {
-        return additionalInfo;
-    }
-
-    public void setAdditionalInfo(Map<String, Object> additionalInfo) {
-        this.additionalInfo = additionalInfo;
-    }
+//    public Map<String, Object> getAdditionalInfo() {
+//        return additionalInfo;
+//    }
+//
+//    public void setAdditionalInfo(Map<String, Object> additionalInfo) {
+//        this.additionalInfo = additionalInfo;
+//    }
 
     public Long getMobileNumber() {
         return mobileNumber;

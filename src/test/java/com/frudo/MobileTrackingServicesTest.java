@@ -1,14 +1,15 @@
 package com.frudo;
 
 import com.frudo.controllers.AssetTrackingService;
-import com.frudo.controllers.TrackingServices;
-import com.frudo.controllers.TripServices;
+import com.frudo.controllers.MobileTrackingServices;
 import com.frudo.datacontracts.TrackingInfo;
 import com.frudo.model.Trip;
+import com.frudo.model.User;
 import com.frudo.model.Vehicle;
 import com.frudo.model.VehicleImpl;
 import com.frudo.repository.TrackingRepository;
 import com.frudo.repository.TripRepository;
+import com.frudo.repository.UserRepository;
 import com.frudo.repository.VehicleRepository;
 import org.joda.time.DateTime;
 import org.junit.Test;
@@ -31,12 +32,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by abhimanyus on 12/6/17.
+ * Created by abhimanyus on 12/7/17.
  */
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(AssetTrackingService.class)
-public class AssetTrackingServicesTest {
+@WebMvcTest(MobileTrackingServices.class)
+public class MobileTrackingServicesTest {
+
     @Autowired
     private MockMvc mvc;
 
@@ -47,17 +49,21 @@ public class AssetTrackingServicesTest {
     @MockBean
     TrackingRepository trackingRepository;
 
+    @MockBean
+    UserRepository userRepository;
+
     @Test
     public void testTrack() throws Exception {
 
         TrackingInfo trackingInfo = getTrackingInfo();
-        Vehicle vehicle = getVehicle();
         Trip trip = getTrip();
+        User user = new User();
+        user.setUserId("12345");
         given(trackingRepository.save(any(TrackingInfo.class))).willReturn(trackingInfo);
-        given(tripRepository.findByVehicleId("12345")).willReturn(trip);
-        given(vehicleRepository.findByVehicleTrackerId("12345")).willReturn(vehicle);
+        given(tripRepository.findByDriverId("12345")).willReturn(trip);
+        given(userRepository.findByMobileNumber(any(Long.class))).willReturn(user);
         given(trackingRepository.findAll(any(Sort.class))).willReturn(Collections.singletonList(trackingInfo));
-        mvc.perform(post("/api/asset/track").contentType(MediaType.APPLICATION_JSON).content(getTrackingJson()))
+        mvc.perform(post("/api/mobile/track").contentType(MediaType.APPLICATION_JSON).content(getTrackingJson()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.currentLocation.longitude", is(trackingInfo.getCurrentLocation().getLongitude())));
 
@@ -65,7 +71,7 @@ public class AssetTrackingServicesTest {
 
     private String getTrackingJson() {
         return "{" +
-                "\"trackerId\" : \"12345\"," +
+                "\"mobileNumber\" : \"9663824250\"," +
                 "\"currentLocation\" : {" +
                 "\"longitude\" : 123.65," +
                 "\"latitude\" : 123.65" +
@@ -74,11 +80,7 @@ public class AssetTrackingServicesTest {
                 "}";
     }
 
-    private Vehicle getVehicle(){
-        VehicleImpl vehicle = new VehicleImpl();
-        vehicle.setVehicleId("12345");
-        return vehicle;
-    }
+
 
     private Trip getTrip(){
         Trip trip = new Trip();

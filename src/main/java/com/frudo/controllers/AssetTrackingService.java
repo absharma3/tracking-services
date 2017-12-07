@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
@@ -37,7 +35,7 @@ public class AssetTrackingService implements TrackingServices {
     int timeInterval;
 
     @RequestMapping(path = "/track" , method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public TrackingInfo track(TrackingInfo trackingInfo) {
+    public @ResponseBody TrackingInfo track(@RequestBody TrackingInfo trackingInfo) {
             Vehicle vehicle = vehicleRepository.findByVehicleTrackerId(trackingInfo.getTrackerId());
             if(vehicle != null){
                 Trip trip = tripRepository.findByVehicleId(vehicle.getVehicleId());

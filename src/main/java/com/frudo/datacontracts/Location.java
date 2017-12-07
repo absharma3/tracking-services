@@ -8,15 +8,6 @@ public class Location {
     Double longitude;
     Double latitude;
 
-//    boolean validateLatitude(){
-//
-//    }
-//
-//    boolean validateLongitude(){
-//
-//    }
-
-
     public Double getLongitude() {
         return longitude;
     }
